@@ -1,2 +1,5 @@
 # simpleCrawler
-Simple Spider/Web Crawler written in python
+Simple (multi-threaded) Spider/Web Crawler written in python
+
+Full discretion credit goes to Buck Roberts for tutorial posted online:
+https://thenewboston.com/index.php

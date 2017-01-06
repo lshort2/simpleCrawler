@@ -1,0 +1,5 @@
+Complete Python tut
+Figure out how to do it again in Perl
+Figure out how to profile program
+Run them head to head (w/ different # of threads)
+
