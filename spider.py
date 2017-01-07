@@ -44,9 +44,45 @@ class Spider:
         if page_url not in Spider.crawled:
             print(thread_name +' crawling ' +page_url)
             print( 'Queue ' + str(len(Spider.queue)) +' | Crawled ' +str(len(Spider.crawled)) )
-            Spider.add_links_to_queue(Spider.gather_link(page_url))
+            Spider.add_links_to_queue(Spider.gather_links(page_url))
             Spider.queue.remove(page_url)
             Spider.crawled.add(page_url)
             Spider.update_files()#after we have done our fast operations w/ our variables, now we can update files on HDD
+
+    @staticmethod
+    def gather_links(page_url): #need to convert response we get back from zero in bytes to a string,
+        html_string =''         # so our python method can actually use it
+        try:
+            response =urlopen(page_url)
+            if response.getheader('Content-Type') == 'text/html':
+                html_bytes = response.read()
+                html_string = html_bytes.decode("utf-8")
+            findy = LinkFinder(Spider.base_url, page_url)
+            findy.feed(html_string)
+        except:
+            print 'Error: can not crawl page', file=sys.stderr
+            return set()
+        return findy.page_links()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
