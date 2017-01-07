@@ -1,4 +1,7 @@
 #!/usr/bin/env python3
+#FotP:
+#  Dim lights reduce your appetite.
+
 import threading
 from queue import Queue
 

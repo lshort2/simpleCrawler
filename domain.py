@@ -1,5 +1,3 @@
-#!/usr/bin/env python3
-
 #Fxns responsible for extracting domain name
 #Don't crawl the entire internet
 from urllib.parse import urlparse

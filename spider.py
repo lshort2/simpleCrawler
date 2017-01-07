@@ -1,7 +1,3 @@
-#!/usr/bin/env python3
-#FotP:
-#  Dim lights reduce your appetite.
-
 from urllib.request import urlopen
 from link_finder import LinkFinder
 from general import *
