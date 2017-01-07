@@ -60,10 +60,25 @@ class Spider:
             findy = LinkFinder(Spider.base_url, page_url)
             findy.feed(html_string)
         except:
-            print 'Error: can not crawl page', file=sys.stderr
+            print ('Error: can not crawl page')
             return set()
         return findy.page_links()
 
+    @staticmethod
+    def add_links_to_queue(links):
+        for url in links:
+            if url in Spider.queue:
+                continue #go to next iteration of loop if we already have url in queue or set
+            if url in Spider.crawled:
+                continue
+            if Spider.domain_name not in url:   #This means only crawl the site we specified
+                continue                        #(not the whole internet)
+            Spider.queue.add(url)
+
+    @staticmethod
+    def update_files():
+        set_to_file(Spider.queue, Spider.queue_file)
+        set_to_file(Spider.crawled, Spider.crawled_file)
 
 
 

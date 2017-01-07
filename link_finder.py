@@ -13,7 +13,7 @@ class LinkFinder(HTMLParser):
     def handle_starttag(self, tag, attrs):
         if tag == 'a':                     #Only run this functionality where we have an anchor,
             for(attribute, value) in attrs:#  which should be where the links are
-                if (attribute == 'href':   #take care of issue w/ relative paths
+                if attribute == 'href':   #take care of issue w/ relative paths
                     url =parse.urljoin(self.base_url, value)
                     self.links.add(url)
 
