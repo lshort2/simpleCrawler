@@ -1,4 +1,5 @@
 from urllib.request import urlopen
+from urllib import robotparser
 from link_finder import LinkFinder
 from general import *
 
@@ -14,11 +15,12 @@ class Spider:
     #these are the variables - they are in RAM as opposed to HDD and much faster to access
     queue   =set()
     crawled =set()
+    rp = robotparser.RobotFileParser() #make sure we are allowed to add links
 
 
     #ctor/initializer thingy
     #domain_name allows us to use a bunch of cool domain name 
-    #fxns to ensure we are connecting to avalid webpage w/o errors
+    #fxns to ensure we are connecting to a valid webpage w/o errors
     def __init__(self, project_name, base_url, domain_name):
         Spider.project_name =project_name
         Spider.base_url     =base_url
@@ -26,6 +28,8 @@ class Spider:
         Spider.queue_file   =Spider.project_name +'/queue.txt'
         Spider.crawled_file =Spider.project_name +'/crawled.txt'
         self.boot()
+        self.rp.set_url(self.base_url +'/robots.txt')
+        self.rp.read()
         self.crawl_page('First spider', Spider.base_url)
 
     @staticmethod   #This is a little indicator to python to say, hey this is a static method, (make PEP8 happy)
@@ -56,9 +60,16 @@ class Spider:
             findy = LinkFinder(Spider.base_url, page_url)
             findy.feed(html_string)
         except:
-            print ('Error: can not crawl page')
+            print ('Error: cannot crawl page')
             return set()
-        return findy.page_links()
+
+        crawlable_links = set()
+
+        for url in findy.page_links():
+            if Spider.rp.can_fetch("*", url):
+                crawlable_links.add(url)
+
+        return crawlable_links
 
     @staticmethod
     def add_links_to_queue(links):
@@ -75,25 +86,4 @@ class Spider:
     def update_files():
         set_to_file(Spider.queue, Spider.queue_file)
         set_to_file(Spider.crawled, Spider.crawled_file)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 

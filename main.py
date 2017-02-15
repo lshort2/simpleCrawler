@@ -15,15 +15,16 @@ HOMEPAGE = input('Enter value for HOMEPAGE\n')
 DOMAIN_NAME = get_domain_name(HOMEPAGE)
 QUEUE_FILE = PROJECT_NAME +'/queue.txt'
 CRAWLED_FILE = PROJECT_NAME +'/crawled.txt'
-NUMBER_OF_THREADS =4#Not sure max number of threads for my computer, so just start w/ 4
+NUMBER_OF_THREADS =4 #Not sure max number of threads for my computer, so just start w/ 4
 
 threadQueue = Queue()
 Spider(PROJECT_NAME, HOMEPAGE, DOMAIN_NAME)#first spider will get all the links from the homepage
+print('first spider created')
 
 #Create worker threads (will die when main exits)
 def create_spiders():
-    for _ in range(NUMBER_OF_THREADS):#convention is to use underscore when we don't need to use variable in the for loop
-        t = threading.Thread(target=work)
+    for _ in range(NUMBER_OF_THREADS):      #convention is to use underscore when we
+        t = threading.Thread(target=work)   # don't need to use variable in the for loop
         t.daemon = True #Ensuring it runs as daemon process and dies when main exits
         t.start()
 
@@ -39,7 +40,7 @@ def work():
 def create_jobs():
     for link in file_to_set(QUEUE_FILE):
         threadQueue.put(link)
-    threadQueue.join()
+    threadQueue.join()#blocks until all jobs in queue processed
     crawl()
 
 
