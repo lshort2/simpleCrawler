@@ -1,14 +1,12 @@
 # simpleCrawler - A Simple Web Crawler
 Simple (multi-threaded) Web Crawler written in Python
+![CustomWebSpiderImg] (https://lh5.googleusercontent.com/HajJ5EJ8fQB14CHtITFVuO7XEx7f76YQh4m0Q5b0xtF5QcIz_i9ahumUfA3n5XfSP2ra4L3GxtM3bK8=w1920-h916)
 
-Full discretion credit goes to Buck Roberts for tutorial posted online:
-https://thenewboston.com/videos.php
-https://github.com/buckyroberts/Spider
+*Full discretion: Credit goes to Bucky Roberts for developing python tutorials on his* [website] (https://thenewboston.com/videos.php)* and introducing the idea of the web crawler/web spider.*
 
-Chose to start from bottom up and go through the tutorial rather than just forking one in order to familiarize myself with python and the basic structure of how the crawler works, then build from there.
+This project served as an opportunity to familiarize myself with Python and expand upon an existing project.
 
 #TODO
 - ~~Figure out how to make this guy obey robots.txt file~~ (done!)
-- Update domain.py to allow more link formats (i.e. example.com instead of only https://www.examlpe.com/)
-- Scrape facts from snapplefacts.com
+- Update domain.py to allow more link formats (i.e. example.com instead of only https://www.example.com/)
 
