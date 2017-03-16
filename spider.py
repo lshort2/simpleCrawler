@@ -28,7 +28,7 @@ class Spider:
         Spider.queue_file   =Spider.project_name +'/queue.txt'
         Spider.crawled_file =Spider.project_name +'/crawled.txt'
         self.boot()
-        self.rp.set_url(self.base_url +'/robots.txt')
+        self.rp.set_url('http://' +self.domain_name +'/robots.txt')
         self.rp.read()
         self.crawl_page('First spider', Spider.base_url)
 
