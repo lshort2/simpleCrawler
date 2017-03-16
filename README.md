@@ -1,7 +1,7 @@
 # simpleCrawler - A Simple Web Crawler
 A Simple (multi-threaded) Web Crawler written in Python
 
-![CustomWebSpiderImg] (http://i.imgur.com/zlzbZBk.png)
+![CustomWebSpiderImg](http://i.imgur.com/zlzbZBk.png)
 
 *Full discretion: Credit goes to Bucky Roberts for developing python tutorials on his* [website] (https://thenewboston.com/videos.php) *and introducing the idea of the web crawler/web spider.*
 
