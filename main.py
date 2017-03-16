@@ -12,6 +12,7 @@ from general import *
 #There are no built-in constants, but the python convention is to put in all caps if you don't want to change them
 PROJECT_NAME = input('Enter value for PROJECT_NAME\n')
 HOMEPAGE = input('Enter value for HOMEPAGE\n')
+HOMEPAGE = make_full_url(HOMEPAGE)#Ensure scheme included (HTTP, HTTPS, etc.)
 DOMAIN_NAME = get_domain_name(HOMEPAGE)
 QUEUE_FILE = PROJECT_NAME +'/queue.txt'
 CRAWLED_FILE = PROJECT_NAME +'/crawled.txt'
