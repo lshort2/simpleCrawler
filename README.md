@@ -9,5 +9,5 @@ This project served as an opportunity to familiarize myself with Python and expa
 
 ###TODO
 - ~~Figure out how to make this guy obey robots.txt file~~ (done!)
-- Update domain.py to allow more link formats (i.e. example.com instead of only https://www.example.com/)
+- ~~Update domain.py to allow more link formats (i.e. example.com instead of only https://www.example.com/)~~ (done!)
 
